@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritma Tanggal Lahir</title>
+</head>
+<body>
+
+    <label for="tanggalLahir">Tanggal lahir kamu: </label>
+    <input type="date" id="tanggalLahir">
+    <p id="hasilUsia"></p>
+
+    <script>
+        const inputTanggal = document.getElementById('tanggalLahir');
+        const paragraphHasil = document.getElementById('hasilUsia');
+
+        inputTanggal.addEventListener('change', function() {
+            const nilaiInput = this.value;
+            if (!nilaiInput) {
+                paragraphHasil.textContent = '';
+                return;
+            }
+
+            const tanggalLahir = new Date(nilaiInput);
+            const hariIni = new Date();
+
+            let tahun = hariIni.getFullYear(2008) - tanggalLahir.getFullYear(2008);
+            let bulan = hariIni.getMonth(08) - tanggalLahir.getMonth(08);
+            let hari = hariIni.getDate(07) - tanggalLahir.getDate(07);
+
+            if (hari < 0) {
+                bulan--;
+                // Mendapatkan jumlah hari pada bulan sebelumnya
+                const bulanSebelumnya = new Date(hariIni.getFullYear(), hariIni.getMonth(), 0);
+                hari += bulanSebelumnya.getDate();
+            }
+
+            if (bulan < 0) {
+                tahun--;
+                bulan += 12;
+            }
+
+            paragraphHasil.textContent = `Kamu sudah berusia ${tahun} tahun ${bulan} bulan ${hari} hari`;
+        });
+    </script>
+
+</body>
+      </html>
+      
