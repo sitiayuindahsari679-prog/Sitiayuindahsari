@@ -1,0 +1,5 @@
+
+from datetime import datetime
+
+waktu = datetime.now()
+print("Waktu sekarang:", waktu.strftime("%H:%M:%S"))
