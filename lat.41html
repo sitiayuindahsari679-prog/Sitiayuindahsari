@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Waktu Digital</title>
+</head>
+<body>
+    <h1>Waktu Sekarang</h1>
+    <h2 id="waktu"></h2>
+
+    <script>
+        function tampilkanWaktu() {
+            const sekarang = new Date();
+
+            const waktu = sekarang.toLocaleTimeString(
+                "id-ID",
+                { timeZone: "Asia/Jakarta", hour12: false }
+            );
+
+            document.getElementById("waktu").innerHTML = waktu;
+        }
+
+        tampilkanWaktu();
+        setInterval(tampilkanWaktu, 1000);
+    </script>
+</body>
+</html>
