@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menampilkan Waktu</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f4ff;
+            padding: 50px 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 10px #cccccc;
+        }
+
+        h1 {
+            color: #0d6efd;
+        }
+
+        #waktu {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Waktu Sekarang</h1>
+        <p id="waktu">00:00:00</p>
+        <p id="tanggal"></p>
+    </div>
+
+    <script>
+        function tampilkanWaktu() {
+            const sekarang = new Date();
+
+            const jam = String(sekarang.getHours()).padStart(2, '0');
+            const menit = String(sekarang.getMinutes()).padStart(2, '0');
+            const detik = String(sekarang.getSeconds()).padStart(2, '0');
+
+            document.getElementById("waktu").textContent =
+                jam + ":" + menit + ":" + detik;
+
+            document.getElementById("tanggal").textContent =
+                sekarang.toLocaleDateString("id-ID");
+        }
+
+        tampilkanWaktu();
+        setInterval(tampilkanWaktu, 1000);
+    </script>
+
+</body>
+</html>
