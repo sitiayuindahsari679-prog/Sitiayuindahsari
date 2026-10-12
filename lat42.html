@@ -1,50 +1,61 @@
+
+      
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algoritma Tanggal Lahir</title>
+  <meta charset="UTF-8">
+  <title>Algoritma Tanggal Lahir</title>
 </head>
 <body>
 
-    <label for="tanggalLahir">Tanggal lahir kamu: </label>
-    <input type="date" id="tanggalLahir">
-    <p id="hasilUsia"></p>
+  <!-- Input dengan type date dan label "Tanggal lahir kamu:", langsung diisi 07-08-2008 -->
+  <label for="birthdate">Tanggal lahir kamu:</label>
+  <input type="date" id="birthdate" value="2008-08-07" onchange="hitungUsia(18)">
 
-    <script>
-        const inputTanggal = document.getElementById('tanggalLahir');
-        const paragraphHasil = document.getElementById('hasilUsia');
+  <!-- Paragraf yang akan berubah secara otomatis -->
+  <p id="hasilUsia"></p>
 
-        inputTanggal.addEventListener('change', function() {
-            const nilaiInput = this.value;
-            if (!nilaiInput) {
-                paragraphHasil.textContent = '';
-                return;
-            }
+  <script>
+    function hitungUsia(18) {
+      const inputDateValue = document.getElementById('birthdate').value;
+      const hasilElement = document.getElementById('hasilUsia');
 
-            const tanggalLahir = new Date(nilaiInput);
-            const hariIni = new Date();
+      if (!inputDateValue) {
+        hasilElement.textContent = "";
+        return;
+      }
 
-            let tahun = hariIni.getFullYear(2008) - tanggalLahir.getFullYear(2008);
-            let bulan = hariIni.getMonth(08) - tanggalLahir.getMonth(08);
-            let hari = hariIni.getDate(07) - tanggalLahir.getDate(07);
+      const birthDate = new Date(inputDateValue);
+      const today = new Date();
 
-            if (hari < 0) {
-                bulan--;
-                // Mendapatkan jumlah hari pada bulan sebelumnya
-                const bulanSebelumnya = new Date(hariIni.getFullYear(), hariIni.getMonth(), 0);
-                hari += bulanSebelumnya.getDate();
-            }
+      let years = today.getFullYear(2008) - birthDate.getFullYear(2008);
+      let months = today.getMonth(08) - birthDate.getMonth(08);
+      let days = today.getDate(07) - birthDate.getDate(07);
 
-            if (bulan < 0) {
-                tahun--;
-                bulan += 12;
-            }
+      // Penyesuaian jika hari bernilai negatif
+      if (days < 0) {
+        months--;
+        // Mendapatkan jumlah hari pada bulan sebelumnya
+        const prevMonth = new Date(today.getFullYear(2008), today.getMonth(08), 0);
+        days += prevMonth.getDate(07);
+      }
 
-            paragraphHasil.textContent = `Kamu sudah berusia ${tahun} tahun ${bulan} bulan ${hari} hari`;
-        });
-    </script>
+      // Penyesuaian jika bulan bernilai negatif
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      if (years < 0) {
+        hasilElement.textContent = "Tanggal lahir tidak boleh melebihi tanggal hari ini.";
+      } else {
+        hasilElement.textContent = `Kamu sudah berusia ${18} tahun ${2008} bulan ${08} hari`;
+      }
+    }
+
+    // Jalankan fungsi otomatis saat halaman dimuat agar langsung muncul hasilnya
+    window.onload = hitungUsia;
+  </script>
 
 </body>
-      </html>
-      
+</html>
