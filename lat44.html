@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Huruf Mutu Nilai</title>
+    <!-- Tailwind CSS untuk styling modern dan cepat -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold text-slate-800 mb-6 text-center">Cek Huruf Mutu Mahasiswa</h1>
+        
+        <!-- Form Input -->
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Nama Mahasiswa</label>
+                <input type="text" id="nama" placeholder="Masukkan nama..." 
+                    class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Nilai Akhir (0 - 100)</label>
+                <input type="text" id="nilai" placeholder="Contoh: 85.5" 
+                    class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <button onclick="prosesNilai()" 
+                class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                Proses Nilai
+            </button>
+        </div>
+
+        <!-- Area Pesan Error -->
+        <div id="error-msg" class="hidden mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm text-center"></div>
+
+        <!-- Area Hasil Output -->
+        <div id="result-card" class="hidden mt-6 p-6 rounded-xl text-center transition-all duration-300">
+            <h3 id="res-nama" class="text-lg font-semibold text-slate-800 mb-2"></h3>
+            <div class="text-4xl font-extrabold my-2" id="res-huruf">-</div>
+            <p id="res-keterangan" class="text-sm font-medium text-slate-600"></p>
+        </div>
+    </div>
+
+    <script>
+        function prosesNilai() {
+            const namaInput = document.getElementById('nama').value.trim();
+            const nilaiInput = document.getElementById('nilai').value.trim();
+            const errorBox = document.getElementById('error-msg');
+            const resultCard = document.getElementById('result-card');
+            
+            // Reset tampilan
+            errorBox.classList.add('hidden');
+            resultCard.classList.add('hidden');
+
+            // Validasi Nama Kosong
+            if (namaInput === "") {
+                showError("Nama mahasiswa tidak boleh kosong!");
+                return;
+            }
+
+            // Validasi Bukan Angka
+            if (isNaN(nilaiInput) || nilaiInput === "") {
+                showError("Error: Input yang Anda masukkan bukan angka yang valid!");
+                return;
+            }
+
+            const nilai = parseFloat(nilaiInput);
+
+            // Validasi Nilai Negatif atau Lebih dari 100
+            if (nilai < 0) {
+                showError("Error: Nilai tidak boleh bernilai negatif!");
+                return;
+            }
+            if (nilai > 100) {
+                showError("Error: Nilai tidak boleh melebihi 100!");
+                return;
+            }
+
+            // Penentuan Huruf Mutu & Warna Background
+            let huruf = "";
+            let warnaBg = "";
+            let textColor = "";
+
+            if (nilai >= 0 && nilai <= 49.49) {
+                huruf = "E";
+                warnaBg = "bg-red-100";
+                textColor = "text-red-700";
+            } else if (nilai >= 49.5 && nilai <= 59.49) {
+                huruf = "D";
+                warnaBg = "bg-orange-100";
+                textColor = "text-orange-700";
+            } else if (nilai >= 59.5 && nilai <= 74.49) {
+                huruf = "C";
+                warnaBg = "bg-yellow-100";
+                textColor = "text-yellow-700";
+            } else if (nilai >= 74.5 && nilai <= 84.49) {
+                huruf = "B";
+                warnaBg = "bg-blue-100";
+                textColor = "text-blue-700";
+            } else if (nilai >= 84.5 && nilai <= 100) {
+                huruf = "A";
+                warnaBg = "bg-emerald-100";
+                textColor = "text-emerald-700";
+            }
+
+            // Tampilkan Hasil
+            document.getElementById('res-nama').innerText = `Nama: ${namaInput} (Nilai: ${nilai})`;
+            const elHuruf = document.getElementById('res-huruf');
+            elHuruf.innerText = `Huruf Mutu: ${huruf}`;
+            elHuruf.className = `text-4xl font-extrabold my-2 ${textColor}`;
+            
+            document.getElementById('res-keterangan').innerText = `Berhasil divalidasi dengan predikat huruf ${huruf}`;
+
+            // Set Background Card Sesuai Hasil
+            resultCard.className = `mt-6 p-6 rounded-xl text-center transition-all duration-300 ${warnaBg} border border-slate-200`;
+            resultCard.classList.remove('hidden');
+        }
+
+        function showError(message) {
+            const errorBox = document.getElementById('error-msg');
+            errorBox.innerText = message;
+            errorBox.classList.remove('hidden');
+        }
+    </script>
+</body>
+  </html>
+  
