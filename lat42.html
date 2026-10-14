@@ -1,61 +1,154 @@
-
-      
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Algoritma Tanggal Lahir</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Usia</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaf7fc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2878c8;
+            font-size: 32px;
+            margin-bottom: 45px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        #hasilUsia {
+            background-color: #eaf6fc;
+            color: #426783;
+            padding: 22px;
+            border-radius: 15px;
+            font-size: 20px;
+            line-height: 1.8;
+            min-height: 70px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 25px;
+                border-radius: 25px;
+            }
+
+            h1 {
+                font-size: 27px;
+                margin-bottom: 35px;
+            }
+
+            label {
+                font-size: 18px;
+            }
+
+            input[type="date"],
+            #hasilUsia {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Input dengan type date dan label "Tanggal lahir kamu:", langsung diisi 07-08-2008 -->
-  <label for="birthdate">Tanggal lahir kamu:</label>
-  <input type="date" id="birthdate" value="2008-08-07" onchange="hitungUsia(18)">
+    <div class="card">
+        <h1>Kalkulator Usia</h1>
 
-  <!-- Paragraf yang akan berubah secara otomatis -->
-  <p id="hasilUsia"></p>
+        <label for="tanggalLahir">
+            Tanggal lahir kamu:
+        </label>
 
-  <script>
-    function hitungUsia(18) {
-      const inputDateValue = document.getElementById('birthdate').value;
-      const hasilElement = document.getElementById('hasilUsia');
+        <input
+            type="date"
+            id="tanggalLahir"
+            value="2008-08-07"
+        >
 
-      if (!inputDateValue) {
-        hasilElement.textContent = "";
-        return;
-      }
+        <p id="hasilUsia"></p>
+    </div>
 
-      const birthDate = new Date(inputDateValue);
-      const today = new Date();
+    <script>
+        const inputTanggal = document.getElementById("tanggalLahir");
+        const hasilUsia = document.getElementById("hasilUsia");
 
-      let years = today.getFullYear(2008) - birthDate.getFullYear(2008);
-      let months = today.getMonth(08) - birthDate.getMonth(08);
-      let days = today.getDate(07) - birthDate.getDate(07);
+        function hitungUsia() {
+            if (!inputTanggal.value) {
+                hasilUsia.textContent = "";
+                return;
+            }
 
-      // Penyesuaian jika hari bernilai negatif
-      if (days < 0) {
-        months--;
-        // Mendapatkan jumlah hari pada bulan sebelumnya
-        const prevMonth = new Date(today.getFullYear(2008), today.getMonth(08), 0);
-        days += prevMonth.getDate(07);
-      }
+            const lahir = new Date(inputTanggal.value + "T00:00:00");
+            const sekarang = new Date();
 
-      // Penyesuaian jika bulan bernilai negatif
-      if (months < 0) {
-        years--;
-        months += 12;
-      }
+            if (lahir > sekarang) {
+                hasilUsia.textContent = "Tanggal lahir tidak valid.";
+                return;
+            }
 
-      if (years < 0) {
-        hasilElement.textContent = "Tanggal lahir tidak boleh melebihi tanggal hari ini.";
-      } else {
-        hasilElement.textContent = `Kamu sudah berusia ${18} tahun ${2bulan} bulan ${07} hari`;
-      }
-    }
+            let tahun = sekarang.getFullYear() - lahir.getFullYear();
+            let bulan = sekarang.getMonth() - lahir.getMonth();
+            let hari = sekarang.getDate() - lahir.getDate();
 
-    // Jalankan fungsi otomatis saat halaman dimuat agar langsung muncul hasilnya
-    window.onload = hitungUsia;
-  </script>
+            if (hari < 0) {
+                bulan--;
+
+                hari += new Date(
+                    sekarang.getFullYear(),
+                    sekarang.getMonth(),
+                    0
+                ).getDate();
+            }
+
+            if (bulan < 0) {
+                tahun--;
+                bulan += 12;
+            }
+
+            hasilUsia.textContent =
+                `Kamu sudah berusia ${tahun} tahun ${bulan} bulan ${hari} hari.`;
+        }
+
+        inputTanggal.addEventListener("input", hitungUsia);
+
+        hitungUsia();
+    </script>
 
 </body>
 </html>
