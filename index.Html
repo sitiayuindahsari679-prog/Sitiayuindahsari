@@ -1,0 +1,34 @@
+# Kalkulator Aritmatika
+# Nama : Siti Ayu Indah Sari
+# NIM  : 262302015
+
+def hitung(a, op, b):
+    if op == "+":
+        return a + b
+    if op == "-":
+        return a - b
+    if op == "*":
+        return a * b
+    if op == "/":
+        if b == 0:
+            return "Error: tidak bisa dibagi nol"
+        return a / b
+    return "Error: operator tidak dikenal"
+
+print("=== Kalkulator Aritmatika ===")
+print("Siti Ayu Indah Sari - 262302015")
+
+while True:
+    try:
+        a = float(input("\nAngka pertama : "))
+        op = input("Operator (+ - * /): ")
+        b = float(input("Angka kedua   : "))
+    except ValueError:
+        print("Error: masukkan angka yang valid")
+        continue
+
+    print("Hasil =", hitung(a, op, b))
+
+    if input("Hitung lagi? (y/n): ").lower() != "y":
+        print("Terima kasih!")
+        break
