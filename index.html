@@ -1,61 +1,172 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalkulator Aritmatika</title>
-<style>
-body { font-family: sans-serif; background: #f0f2f5; display:flex; justify-content:center; padding:20px; }
-.card { background: white; width: 100%; max-width: 400px; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.header { background: #1676ff; color: white; text-align: center; padding: 20px; }
-.header h2 { margin: 0; }
-.header p { margin: 5px 0 0; font-size: 14px; }
-.content { padding: 20px; }
-label { display: block; margin: 15px 0 5px; font-weight: bold; }
-input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
-button { width: 100%; margin-top: 20px; background: #1676ff; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; }
-.hasil { background: #22252f; color: white; margin-top: 20px; padding: 15px; border-radius: 10px; text-align: center; }
-.hasil h1 { margin: 5px 0 0; font-size: 40px; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biodata Online | Bukti Belajar</title>
+  <meta name="description" content="Biodata online pribadi dengan Scientific Calculator JavaScript." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="card">
-  <div class="header">
-    <h2>Kalkulator Aritmatika</h2>
-    <p>Siti Ayu Indah Sari - 262302015</p>
-  </div>
-  <div class="content">
-    <label>Angka 1</label>
-    <input type="number" id="a1" placeholder="Masukkan angka">
-    <label>Operasi</label>
-    <select id="op">
-      <option value="+">Tambah (+)</option>
-      <option value="-">Kurang (-)</option>
-      <option value="*">Kali (×)</option>
-      <option value="/">Bagi (÷)</option>
-    </select>
-    <label>Angka 2</label>
-    <input type="number" id="a2" placeholder="Masukkan angka">
-    <button onclick="hitung()">Hitung</button>
-    <div class="hasil">
-      <span>Hasil</span>
-      <h1 id="hasil">0</h1>
-    </div>
-  </div>
-</div>
-<script>
-function hitung(){
-  let x = parseFloat(document.getElementById('a1').value);
-  let y = parseFloat(document.getElementById('a2').value);
-  let op = document.getElementById('op').value;
-  let h = 0;
-  if(isNaN(x) || isNaN(y)){ alert('Isi kedua angka dulu'); return; }
-  if(op=='+') h=x+y;
-  if(op=='-') h=x-y;
-  if(op=='*') h=x*y;
-  if(op=='/') h= y!=0 ? x/y : 'Error';
-  document.getElementById('hasil').innerText = h;
-}
-</script>
+
+  <!-- ============ NAVIGASI ============ -->
+  <header class="nav">
+    <a href="#beranda" class="brand">&lt;/&gt; <span>Siti ayu indah sari</span></a>
+    <button class="burger" id="burger" aria-label="Buka menu">☰</button>
+    <nav id="menu">
+      <a href="#beranda">Beranda</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#skill">Skill</a>
+      <a href="#bukti-belajar">Bukti Belajar</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ BERANDA ============ -->
+    <section id="beranda" class="hero">
+      <p class="tag">// halo, dunia</p>
+      <h1>Hai, saya <span class="grad">Siti ayu indah sari</span></h1>
+      <p class="lead">Mahasiswa Fakultas Komputer yang sedang belajar mengubah logika menjadi program.</p>
+      <a class="btn" href="#bukti-belajar">Lihat Bukti Belajar →</a>
+    </section>
+
+    <!-- ============ TENTANG ============ -->
+    <section id="tentang" class="wrap">
+      <h2>Tentang Saya</h2>
+      <div class="card about">
+        <dl>
+          <dt>Nama</dt><dd>Siti ayu indah sari</dd>
+          <dt>NIM</dt><dd>262302015</dd>
+          <dt>Fakultas</dt><dd>Komputer</dd>
+          <dt>Kelas</dt><dd>KA-R-1</dd>
+          <dt>Hobi</dt><dd>[menulis]</dd>
+        </dl>
+        <p>[Tulis deskripsi singkat tentang dirimu di sini.]</p>
+      </div>
+    </section>
+
+    <!-- ============ SKILL ============ -->
+    <section id="skill" class="wrap">
+      <h2>Skill</h2>
+      <div class="chips">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        <span>Logika Algoritma</span><span>Git</span>
+      </div>
+    </section>
+
+    <!-- ============ BUKTI BELAJAR ============ -->
+    <section id="bukti-belajar" class="wrap">
+      <h2>Bukti Belajar</h2>
+      <p class="sub">Perjalanan belajar Logika Algoritma bersama Pa Iin TA 20261</p>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="basic" role="tab">Level 1 · Basic</button>
+        <button class="tab" data-tab="sci" role="tab">Level 2–4 · Scientific</button>
+      </div>
+
+      <!-- LEVEL 1 -->
+      <div class="card panel" id="tab-basic">
+        <form id="basicForm" novalidate>
+          <label>Input 1
+            <input type="number" id="num1" step="any" inputmode="decimal" placeholder="20" />
+          </label>
+          <label>Operator
+            <select id="op">
+              <option value="+">+ Penjumlahan</option>
+              <option value="-">- Pengurangan</option>
+              <option value="*">* Perkalian</option>
+              <option value="/">/ Pembagian</option>
+            </select>
+          </label>
+          <label>Input 2
+            <input type="number" id="num2" step="any" inputmode="decimal" placeholder="10" />
+          </label>
+          <button type="submit" class="btn full">Hitung</button>
+        </form>
+        <div class="basic-result" id="basicResult" aria-live="polite">Hasil: –</div>
+      </div>
+
+      <!-- LEVEL 2-4 -->
+      <div class="sci-layout" id="tab-sci" hidden>
+        <div class="calc card">
+          <div class="calc-top">
+            <div class="seg" id="angleSeg">
+              <button class="on" data-angle="deg">DEG</button>
+              <button data-angle="rad">RAD</button>
+            </div>
+          </div>
+
+          <div class="display">
+            <div class="expr" id="expr">0</div>
+            <div class="res" id="res">&nbsp;</div>
+          </div>
+
+          <div class="keys" id="keys">
+            <button class="fn" data-v="sin(">sin</button>
+            <button class="fn" data-v="cos(">cos</button>
+            <button class="fn" data-v="tan(">tan</button>
+            <button class="fn" data-v="(">(</button>
+            <button class="fn" data-v=")">)</button>
+
+            <button class="fn" data-v="√(">√</button>
+            <button class="fn" data-v="^2">x²</button>
+            <button class="fn" data-v="log(">log</button>
+            <button class="fn" data-v="ln(">ln</button>
+            <button class="fn" data-v="!">n!</button>
+
+            <button class="fn" data-v="π">π</button>
+            <button class="fn" data-v="e">e</button>
+            <button class="op" data-v="^">^</button>
+            <button class="op" data-v="%">mod</button>
+            <button class="clr" data-act="ac">AC</button>
+
+            <button data-v="7">7</button>
+            <button data-v="8">8</button>
+            <button data-v="9">9</button>
+            <button class="op" data-v="÷">÷</button>
+            <button class="op" data-v="×">×</button>
+
+            <button data-v="4">4</button>
+            <button data-v="5">5</button>
+            <button data-v="6">6</button>
+            <button class="op" data-v="−">−</button>
+            <button class="op" data-v="+">+</button>
+
+            <button data-v="1">1</button>
+            <button data-v="2">2</button>
+            <button data-v="3">3</button>
+            <button data-v="0">0</button>
+            <button data-v=".">.</button>
+
+            <button class="clr span2" data-act="back">⌫ Hapus</button>
+            <button class="eq span3" data-act="eq">=</button>
+          </div>
+        </div>
+
+        <aside class="card side">
+          <h3>Riwayat</h3>
+          <ul id="history"><li class="empty">Belum ada perhitungan.</li></ul>
+          <button class="btn ghost" id="clearHistory">Hapus riwayat</button>
+          <p class="hint">Tips: keyboard juga bisa dipakai (angka, + - * / ^ % ( ) !, Enter, Backspace, Esc).</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ KONTAK ============ -->
+    <section id="kontak" class="wrap">
+      <h2>Kontak</h2>
+      <div class="card about">
+        <p>Email: <a href="mailto:email@kamu.com">email@kamu.com</a></p>
+        <p>GitHub: <a href="https://github.com/usernamekamu" target="_blank" rel="noopener">github.com/usernamekamu</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Siti ayu indah sari· Dibuat dengan HTML, CSS &amp; JavaScript</footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
