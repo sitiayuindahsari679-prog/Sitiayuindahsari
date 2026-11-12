@@ -1,38 +1,21 @@
-:root{
-  --bg:#DCE8D8;
-  --panel:#8FAE8B;
-  --panel2:#A8C3A0;
-  --text:#1E2A4A;
-  --muted:#4B5563;
-  --accent:#2F5233;
-  --mono:'JetBrains Mono',ui-monospace,Consolas,mono;
-  --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto;
-}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:12px;padding-bottom:25px}
-
-/* CARD BIODATA */
-.card{background:#fff;border-radius:22px;overflow:hidden;text-align:center;padding:28px 18px 0;margin-bottom:18px}
-.card p{color:#1E2A4A;font-size:19px;line-height:1.4}
+body{background:#DCE8D8;color:#1E2A4A;font-family:Arial,sans-serif;padding:12px;padding-bottom:25px}
+.card{background:#fff;border-radius:22px;text-align:center;padding:28px 18px 0;margin-bottom:18px}
+.card p{font-size:19px;line-height:1.4}
 .card .label{margin-top:22px}
 .card hr{border:none;border-top:1px solid #CBD5E1;margin:22px 0}
 .nav-title{font-size:19px;margin-bottom:16px}
 .btn-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
-.btn-biru{background:#2F5233;color:#fff;border:none;padding:13px 20px;border-radius:10px;font-size:16px}
+.btn-biru{background:#8FAE8B;color:#fff;border:none;padding:13px 20px;border-radius:10px;font-size:16px}
 .footer{background:#EEF2F7;color:#64748B;padding:16px;margin:22px -18px 0;font-size:16px}
-
-/* KALKULATOR HIJAU SAGE */
-.calc{background:var(--panel);border-radius:22px;padding:20px 14px 18px;color:#1E2A4A}
-.calc h2{text-align:center;font-weight:600;letter-spacing:1px;font-size:22px;margin-bottom:16px}
-.display{background:#E8EDE3;border-radius:12px;padding:14px;text-align:right;min-height:125px;display:flex;flex-direction:column;justify-content:flex-end}
-#riwayat{font-size:14px;min-height:20px;opacity:.7;word-break:break-all}
-#hasil{font-size:36px;line-height:1.1;word-break:break-all;font-weight:bold}
-#mode{font-size:13px;margin-top:4px;color:#4B5563}
+.calc{background:#8FAE8B;border-radius:22px;padding:20px 14px 18px;color:#1E2A4A}
+.calc h2{text-align:center;font-size:22px;margin-bottom:16px}
+.display{background:#E8EDE3;border-radius:12px;padding:14px;text-align:right;min-height:110px}
+#hasil{font-size:36px;font-weight:bold;word-break:break-all}
+#mode{font-size:13px;color:#4B5563}
 .row{display:flex;gap:10px;margin-top:13px}
 .btn-outline{flex:1;background:#6E9468;border:1.5px solid #fff;color:#fff;padding:12px;border-radius:9px;font-size:16px}
-.judul{margin-top:18px;color:#2F4430;font-size:13px;letter-spacing:1.2px;font-weight:bold}
+.judul{margin-top:18px;color:#2F4430;font-size:13px;font-weight:bold}
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
 .grid button{background:#F5F7F2;color:#1E2A4A;border:none;padding:13px 0;border-radius:8px;font-size:15px}
-.grid button.op{background:#5A7D55;color:#fff}
 .grid button.sama{background:#2F5233;color:#fff}
