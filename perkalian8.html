@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Perkalian 9</title>
+</head>
+<body>
+
+    <h1>Tabel Perkalian 8</h1>
+
+    <div id="hasil"></div>
+  
+    <script>
+        let angka = 8;
+        let output = "";
+
+        for (let i = 1; i <= 10; i++) {
+            let hasil = angka * i;
+            output += angka + " x " + i + " = " + hasil + "<br>";
+        }
+
+        document.getElementById("hasil").innerHTML = output;
+    </script>
+
+</body>
+</html>
