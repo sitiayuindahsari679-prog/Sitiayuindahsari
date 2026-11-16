@@ -1,29 +1,67 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-7">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Perkalian 9</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UTS Algo - Siti Ayu</title>
+<style>
+body{font-family:sans-serif;background:#f2f2f2;padding:15px;display:flex;justify-content:center}
+.card{background:white;width:330px;border-radius:15px;padding:20px}
+.biodata{font-size:15px;line-height:1.6;margin-bottom:15px}
+#layar{width:100%;height:55px;font-size:24px;text-align:right;padding:8px;border-radius:10px;border:1px solid #ddd;background:#eeeeee;box-sizing:border-box;margin-bottom:12px}
+.tombol{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+button{padding:13px;font-size:16px;border:none;border-radius:10px;background:#e8e8e8}
+.orange{background:#ff9f0a;color:white}
+.biru{background:#2f7fc9;color:white}
+</style>
 </head>
 <body>
-
-    <h1>Tabel Perkalian 8</h1>
-
-    <div id="hasil"></div>
-  <Ii>Nim: 262302015</Ii>
-  <Ii>Nama: siti ayu indah sari </Ii>
-
-    <script>
-        let angka = 8;
-        let output = "";
-
-        for (let i = 1; i <= 10; i++) {
-            let hasil = angka * i;
-            output += angka + " x " + i + " = " + hasil + "<br>";
-        }
-
-        document.getElementById("hasil").innerHTML = output;
-    </script>
-
+<div class="card">
+<div class="biodata">
+<b>UTS Algoritma SMT 1</b><br>
+Nama: Siti Ayu Indah Sari<br>
+NIM: 262302015<br>
+Prodi: (D3) Komputerisasi Akuntansi<br>
+Semester: 1
+</div>
+<h2 style="text-align:center">Kalkulator Scientific</h2>
+<input id="layar" readonly placeholder="0">
+<div class="tombol">
+<button onclick="hapus()">C</button>
+<button onclick="tambah('(')">(</button>
+<button onclick="tambah(')')">)</button>
+<button class="orange" onclick="tambah('/')">÷</button>
+<button onclick="tambah('7')">7</button>
+<button onclick="tambah('8')">8</button>
+<button onclick="tambah('9')">9</button>
+<button class="orange" onclick="tambah('*')">×</button>
+<button onclick="tambah('4')">4</button>
+<button onclick="tambah('5')">5</button>
+<button onclick="tambah('6')">6</button>
+<button class="orange" onclick="tambah('-')">-</button>
+<button onclick="tambah('1')">1</button>
+<button onclick="tambah('2')">2</button>
+<button onclick="tambah('3')">3</button>
+<button class="orange" onclick="tambah('+')">+</button>
+<button onclick="tambah('0')">0</button>
+<button onclick="tambah('.')">.</button>
+<button onclick="tambah('%')">%</button>
+<button class="biru" onclick="hitung()">=</button>
+<button onclick="tambah('Math.sin(')">sin</button>
+<button onclick="tambah('Math.cos(')">cos</button>
+<button onclick="tambah('Math.tan(')">tan</button>
+<button onclick="tambah('**')">^</button>
+<button onclick="tambah('Math.sqrt(')">√</button>
+<button onclick="tambah('Math.PI')">π</button>
+<button onclick="tambah('Math.log10(')">log</button>
+<button onclick="hapusSatu()">⌫</button>
+</div>
+</div>
+<script>
+let layar=document.getElementById("layar");
+function tambah(x){layar.value+=x}
+function hapus(){layar.value=""}
+function hapusSatu(){layar.value=layar.value.slice(0,-1)}
+function hitung(){try{layar.value=eval(layar.value.replace(/%/g,"/100"))}catch(e){layar.value="Error"}}
+</script>
 </body>
-</html>
+    </html>
