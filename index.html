@@ -1,101 +1,18 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biodata - Siti Ayu Indah Sari</title>
-<link rel="stylesheet" href="style.css">
+  <title>Tabel Perkalian 8</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="card">
-  <p class="label">Nama</p>
-  <p><b>Siti Ayu Indah Sari</b></p>
-
-  <p class="label">NIM</p>
-  <p><b>262302015</b></p>
-
-  <p class="label">Program Studi</p>
-  <p><b>Komputerisasi Akuntansi</b></p>
-
-  <p class="label">Semester</p>
-  <p><b>1</b></p>
-
-  <p class="label">Hobi</p>
-  <p><b>Menulis</b></p>
-
-  <hr>
-  <p class="nav-title">Navigasi Materi</p>
-  <div class="btn-wrap">
-    <a href="lat41.html"><button class="btn-biru">Latihan 41</button></a>
-    <a href="lat42.html"><button class="btn-biru">Latihan 42</button></a>
-    <a href="lat43.html"><button class="btn-biru">Latihan 43</button></a>
-    <a href="lat44.html"><button class="btn-biru">Latihan 44</button></a>
+  <div class="card">
+    <p class="nim">NIM: 262302015</p>
+    <p class="nama">Nama: Siti Ayu Indah Sari</p>
+    <h1>Tabel<br>Perkalian 8</h1>
+    <p class="sub">Perkalian angka 8 dari<br>1 sampai 10</p>
+    <button onclick="tampilkan()">Tampilkan Perkalian</button>
+    <div id="hasil">Hasil akan muncul di sini.</div>
   </div>
-  <div class="footer">© 2026 - Biodata Mahasiswa</div>
-</div>
-
-<div class="calc">
-  <h2>SCIENTIFIC CALCULATOR</h2>
-  <div class="display">
-    <div id="riwayat"></div>
-    <div id="hasil">0</div>
-    <div id="mode">DEG</div>
-  </div>
-  <div class="row">
-    <button class="btn-outline" onclick="gantiMode()">DEG / RAD</button>
-    <button class="btn-outline" onclick="salin()">SALIN HASIL</button>
-  </div>
-  <p class="judul">FUNGSI ILMIAH</p>
-  <div class="grid">
-    <button onclick="tambah('sin(')">sin</button>
-    <button onclick="tambah('cos(')">cos</button>
-    <button onclick="tambah('tan(')">tan</button>
-    <button onclick="tambah('π')">π</button>
-    <button onclick="tambah('e')">e</button>
-    <button onclick="tambah('7')">7</button>
-    <button onclick="tambah('8')">8</button>
-    <button onclick="tambah('9')">9</button>
-    <button onclick="hapus()">DEL</button>
-    <button onclick="bersih()">AC</button>
-    <button onclick="tambah('4')">4</button>
-    <button onclick="tambah('5')">5</button>
-    <button onclick="tambah('6')">6</button>
-    <button onclick="tambah('*')">×</button>
-    <button onclick="tambah('/')">÷</button>
-    <button onclick="tambah('1')">1</button>
-    <button onclick="tambah('2')">2</button>
-    <button onclick="tambah('3')">3</button>
-    <button onclick="tambah('+')">+</button>
-    <button onclick="tambah('-')">-</button>
-    <button onclick="tambah('0')">0</button>
-    <button onclick="tambah('.')">.</button>
-    <button onclick="tambah('%')">%</button>
-    <button onclick="tambah('(')">(</button>
-    <button class="sama" onclick="hitung()">=</button>
-  </div>
-</div>
-
-<script>
-let ekspresi = "";
-let deg = true;
-function update(){ document.getElementById('hasil').innerText = ekspresi || "0"; document.getElementById('mode').innerText = deg ? "DEG" : "RAD"; }
-function tambah(v){ ekspresi += v; update(); }
-function bersih(){ ekspresi = ""; update(); }
-function hapus(){ ekspresi = ekspresi.slice(0,-1); update(); }
-function gantiMode(){ deg = !deg; update(); }
-function salin(){ navigator.clipboard.writeText(document.getElementById('hasil').innerText); alert("Disalin!"); }
-function hitung(){
-  try{
-    let e = ekspresi.replace(/π/g,"Math.PI").replace(/e/g,"Math.E").replace(/sin\(/g, deg ? "Math.sin(Math.PI/180*" : "Math.sin(").replace(/cos\(/g, deg ? "Math.cos(Math.PI/180*" : "Math.cos(").replace(/tan\(/g, deg ? "Math.tan(Math.PI/180*" : "Math.tan(");
-    if(deg && (e.includes("Math.sin")||e.includes("Math.cos")||e.includes("Math.tan"))) e += ")";
-    let h = eval(e);
-    document.getElementById('riwayat').innerText = ekspresi + " =";
-    ekspresi = String(h);
-    update();
-  }catch{ document.getElementById('hasil').innerText = "Error"; }
-}
-update();
-</script>
+  <script src="script.js"></script>
 </body>
-                           </html>
+</html>
